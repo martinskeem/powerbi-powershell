@@ -2,11 +2,11 @@
 
 . "$PSScriptRoot\AzureAdApp-Values.ps1"
 . "$PSScriptRoot\PowerBI-Auth.ps1"
-. "$PSScriptRoot\PowerBI-Reports.ps1"
+. "$PSScriptRoot\PowerBI-Datasets.ps1"
 
-$workspaceId = "" # set workspace ID of report (get from app.powerbi.com url)
-$reportId = "" # set report ID (get from app.powerbi.com url)
-$newDatasetId = "" # set ID of new dataset (get from app.powerbi.com)
+$workspaceId = "" # insert workspace id of dataset here (get from url on app.powerbi.com)
+$datasetId = "" # insert dataset id here (get from url on app.powerbi.com)
 
 $authHeader = Get-AuthorizationHeader -ClientId $clientId -RedirectUri $redirectUri
-Set-ReportBinding -GroupID $workspaceId -ReportID $reportId -NewDatasetID $newDatasetId -AuthorizationHeader $authHeader
+
+Update-Dataset -AuthorizationHeader $authHeader -GroupID $workspaceId -DatasetID $datasetId
