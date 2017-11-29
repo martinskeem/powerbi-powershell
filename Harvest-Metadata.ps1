@@ -1,4 +1,4 @@
-﻿(New-Object System.Net.WebClient).Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
+(New-Object System.Net.WebClient).Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
 
 . "$PSScriptRoot\AzureAdApp-Values.ps1"
 . "$PSScriptRoot\PowerBI-Auth.ps1"
@@ -6,7 +6,7 @@
 . "$PSScriptRoot\PowerBI-Datasets.ps1"
 . "$PSScriptRoot\PowerBI-Gateways.ps1"
 
-$outputRoot = "C:\temp\powerbi" # folder to place meta data in
+$outputRoot = "C:\temp\power bi meta" # folder to place meta data in
 
 $groupsFile = "$outputRoot\groups.csv"
 $groupUsersFile = "$outputRoot\group_users.csv"
@@ -14,6 +14,7 @@ $datasetsFile = "$outputRoot\group_datasets.csv"
 $datasetRefreshesFile = "$outputRoot\group_dataset_refreshes.csv"
 $datasetSourcesFile = "$outputRoot\group_dataset_boundsources.csv"
 $gatewaysFile = "$outputRoot\gateways.csv"
+$gatewayDatasourcesFile = "$outputRoot\gateway_datasources.csv"
 
 $authHeader = Get-AuthorizationHeader -ClientId $clientId -RedirectUri $redirectUri
 
@@ -23,6 +24,7 @@ Remove-Item -Path $datasetsFile -ErrorAction SilentlyContinue
 Remove-Item -Path $datasetRefreshesFile -ErrorAction SilentlyContinue
 Remove-Item -Path $datasetSourcesFile -ErrorAction SilentlyContinue
 Remove-Item -Path $gatewaysFile -ErrorAction SilentlyContinue
+Remove-Item -Path $gatewayDatasourcesFile -ErrorAction SilentlyContinue
 
 $groups = Get-Groups -AuthorizationHeader $authHeader
 $groups | Export-Csv -Path $groupsFile -Encoding UTF8 -NoTypeInformation
@@ -31,8 +33,11 @@ $groups | Export-Csv -Path $groupsFile -Encoding UTF8 -NoTypeInformation
 $gateways = Get-Gateways -AuthorizationHeader $authHeader
 
 ForEach($gateway in $gateways) {
+    $gatewayDetails = Get-Gateway -GatewayID $gateway.id -AuthorizationHeader $authHeader
+    $gatewayDetails | Export-Csv -Path $gatewaysFile -Encoding UTF8 -NoTypeInformation -Append -Force
+    
     $datasources = Get-GatewayDataSources -AuthorizationHeader $authHeader -GatewayID $gateway.id
-    $datasources | Export-Csv -Path $gatewaysFile -Encoding UTF8 -NoTypeInformation -Append -Force
+    $datasources | Export-Csv -Path $gatewayDatasourcesFile -Encoding UTF8 -NoTypeInformation -Append -Force
 }
 
 # iterate workspaces
