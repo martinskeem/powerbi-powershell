@@ -12,18 +12,16 @@ Prerequisites:
 
 Files in solution:
 
-AzureAdApp-Values.ps1: static values containing Azure AD app values
+<b>AzureAdApp-Values.ps1:</b> static values containing Azure AD app values
 
-Get-GatewayStatus.ps1: check status of gateway and report to event log with version and host it runs on. Error if not live.
+<b>Get-GatewayStatus.ps1:</b> check status of gateway and report to event log with version and host it runs on. Error if not live.
 
-Harvest-Metadata.ps1: harvest list of workspaces (and users), datasets (and sources + refresh history), gateways (and sources)
+<b>Harvest-Metadata.ps1:</b> harvest list of workspaces (and users), datasets (and sources + refresh history), gateways (and sources)
 
-powerbi_metadata.pbit: template file to read data outputted from Harvest-Metadata. Example report that shows dataset refreshes, status, time spent.
+<b>powerbi_metadata.pbit:</b> template file to read data outputted from Harvest-Metadata. Example report that shows dataset refreshes, status, time spent.
 
-Rebind-Report.ps1: bind a report to a new dataset
+<b>Rebind-Report.ps1:</b> bind a report to a new dataset
 
-Refresh-Dataset.ps1: refresh a dataset
+<b>Refresh-Dataset.ps1:</b> refresh a dataset
 
-PowerBI-Auth.ps1, PowerBI-Datasets.ps1, PowerBI-Gateways.ps1, PowerBI-Groups.ps1, PowerBI-Reports.ps1 contain functions for managing respective entities.
-
-
+<b>PowerBI-Auth.ps1, PowerBI-Datasets.ps1, PowerBI-Gateways.ps1, PowerBI-Groups.ps1, PowerBI-Reports.ps1</b> contain functions for managing respective entities.
