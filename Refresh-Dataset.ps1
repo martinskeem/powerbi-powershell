@@ -1,13 +1,12 @@
-﻿(New-Object System.Net.WebClient).Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
+(New-Object System.Net.WebClient).Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
 
+. "$PSScriptRoot\AzureAdApp-Values.ps1"
 . "$PSScriptRoot\PowerBI-Auth.ps1"
-. "$PSScriptRoot\PowerBI-Datasets.ps1"
+. "$PSScriptRoot\PowerBI-Reports.ps1"
 
-$clientId = "" # insert ID of Azure AD App here.
-$redirectUri = "" # insert Redirect URI of Azure AD App here.
-$workspaceId = "" # insert workspace id of dataset here (get from url on app.powerbi.com)
-$datasetId = "" # insert dataset id here (get from url on app.powerbi.com)
+$workspaceId = "" # set workspace ID of report (get from app.powerbi.com url)
+$reportId = "" # set report ID (get from app.powerbi.com url)
+$newDatasetId = "" # set ID of new dataset (get from app.powerbi.com)
 
 $authHeader = Get-AuthorizationHeader -ClientId $clientId -RedirectUri $redirectUri
-
-Update-Dataset -AuthorizationHeader $authHeader -GroupID $workspaceId -DatasetID $datasetId
+Set-ReportBinding -GroupID $workspaceId -ReportID $reportId -NewDatasetID $newDatasetId -AuthorizationHeader $authHeader
