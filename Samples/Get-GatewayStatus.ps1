@@ -1,9 +1,9 @@
 ﻿# RUN ONCE AS ADMIN 
 # New-EventLog -Source "On-premises data gateway Check" -LogName "Application"
 
-$gatewayName = "gateway-test" # insert name of Gateway to check here.
-$clientId = "a3d8e0c4-d1f4-45d9-8031-e2a596c199fd" # The ID of the Application ID of the App Registration in Azure AD
-$redirectUri = "https://www.tinytiny.dk" # One of the redirect URIs provided in the App Registration in Azure AD
+$gatewayName = "" # insert name of Gateway to check here.
+$clientId = "" # The ID of the Application ID of the App Registration in Azure AD
+$redirectUri = "" # One of the redirect URIs provided in the App Registration in Azure AD
 
 $authHeader = Get-AuthorizationHeader -ClientId $clientId -RedirectUri $redirectUri
 

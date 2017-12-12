@@ -1,9 +1,5 @@
-(New-Object System.Net.WebClient).Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
-
-. "$PSScriptRoot\AzureAdApp-Values.ps1"
-. "$PSScriptRoot\PowerBI-Auth.ps1"
-. "$PSScriptRoot\PowerBI-Reports.ps1"
-
+$clientId = "" # The ID of the Application ID of the App Registration in Azure AD
+$redirectUri = "" # One of the redirect URIs provided in the App Registration in Azure AD
 $workspaceId = "" # set workspace ID of report (get from app.powerbi.com url)
 $reportId = "" # set report ID (get from app.powerbi.com url)
 $newDatasetId = "" # set ID of new dataset (get from app.powerbi.com)
