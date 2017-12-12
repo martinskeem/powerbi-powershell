@@ -28,7 +28,9 @@ Update-Dataset -AuthorizationHeader $authHeader -GroupID $workspaceId -DatasetID
 ### Harvest meta data to CSV files
 It is possible to iterate Power BI entities (gateways, workspaces, users, datasets, refresh logs etc.) and extract this. 
 
-This can then be used to create reporting on - e.g. to monitor scheduled datasets that takes excessively long to execute or runs excessively often. This can be useful in a self-service environment and in particular if using a (costly) Premium capacity.
+This can then be used to create reporting on - e.g. to monitor scheduled datasets that takes excessively long to execute or runs excessively often. This can be useful in a self-service environment and in particular if using a (costly) Premium capacity. E.g:
+
+![Refresh Log](https://github.com/martinskeem/powerbi-powershell/blob/master/Assets/refresh-log.png "Refresh Log")
 
 Below script will harvest data to CSV files, which can then be read into a Power BI dataset:
 
