@@ -18,10 +18,12 @@ function Get-AuthorizationHeader
         [Parameter(Mandatory=$true)]
         [string] $ClientID,
         [Parameter(Mandatory=$true)]
-        [string] $RedirectUri
+        [string] $RedirectUri,
+        [Parameter(Mandatory=$false)]
+        [string] $PromptBehavior = "Auto"    
     )
 
-    $token = Get-AuthToken -ClientID $ClientID -RedirectUri $RedirectUri
+    $token = Get-AuthToken -ClientID $ClientID -RedirectUri $RedirectUri -PromptBehavior $PromptBehavior
 
     $authHeader = @{
         'Content-Type'='application/json'

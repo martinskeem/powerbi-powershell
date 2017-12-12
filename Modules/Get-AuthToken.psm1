@@ -18,7 +18,9 @@ function Get-AuthToken
         [Parameter(Mandatory=$true)]
         [string] $ClientID,
         [Parameter(Mandatory=$true)]
-        [string] $RedirectUri
+        [string] $RedirectUri,
+        [Parameter(Mandatory=$true)]
+        [string] $PromptBehavior
     )
 
     $adal = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
@@ -28,7 +30,7 @@ function Get-AuthToken
     [System.Reflection.Assembly]::LoadFrom($adalforms) | Out-Null
  
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.microsoftonline.com/common/oauth2/authorize"
-    $authResult = $authContext.AcquireToken("https://analysis.windows.net/powerbi/api", $ClientID, $RedirectUri, "Auto")
+    $authResult = $authContext.AcquireToken("https://analysis.windows.net/powerbi/api", $ClientID, $RedirectUri, $PromptBehavior)
  
     return $authResult
 }

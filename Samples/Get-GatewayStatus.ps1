@@ -1,9 +1,9 @@
 ﻿# RUN ONCE AS ADMIN 
 # New-EventLog -Source "On-premises data gateway Check" -LogName "Application"
 
-$gatewayName = "" # insert name of Gateway to check here.
 $clientId = "" # The ID of the Application ID of the App Registration in Azure AD
 $redirectUri = "" # One of the redirect URIs provided in the App Registration in Azure AD
+$gatewayName = "" # insert name of Gateway to check here.
 
 $authHeader = Get-AuthorizationHeader -ClientId $clientId -RedirectUri $redirectUri
 
