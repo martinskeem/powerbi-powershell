@@ -51,10 +51,10 @@ DotNetFrameworkVersion = '4.5'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+RequiredModules = @('AzureRM')
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = @('AzureRM')
+# RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
